@@ -1,4 +1,4 @@
-org: hcaballero
+org: geraldocolchado
 service: api-alumnos
 
 provider:
@@ -6,7 +6,7 @@ provider:
   runtime: python3.12
   timeout: 30  
   iam:
-    role: arn:aws:iam::069977955268:role/LabRole
+    role: arn:aws:iam::498917627164:role/LabRole
 
 functions:
   listar:
@@ -17,6 +17,12 @@ functions:
           method: post
           cors: true
           integration: lambda
-
-
+  crear:
+    handler: CrearAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/crear
+          method: post
+          cors: true
+          integration: lambda
 
